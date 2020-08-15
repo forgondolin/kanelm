@@ -15,9 +15,8 @@ onDragEnd : msg -> Attribute msg
 onDragEnd message = on "dragend" (Decode.succeed message)
 
 onDrop : msg -> Attribute msg
-onDrop message = onWithOptions "drop"
-                  { preventDefault = True,
+onDrop message = Html.Events.custom "drop" (Decode.succeed {message = message,
+                  preventDefault = True,
                     stopPropagation = False
-                  }
-                  (Decode.succeed message)
+                  })
 

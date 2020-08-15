@@ -11,7 +11,7 @@ type alias Model = {
   taskInput: String,
   tasks: List Task,
   movingTask: Maybe Task
-}
+ }
 
 -- PORTS
 
@@ -22,10 +22,10 @@ saveData model = ( model, setStorage model )
 
 -- INITIAL FUNCTION
 
-initModel : Maybe Model -> ( Model, Cmd msg )
+initModel : Model -> (Model, Cmd msg )
 initModel model = 
   case model of
-    Just model -> ( model, Cmd.none )
+    Just Maybe.withDefault  model_ -> ( model, Cmd.none )
     Nothing -> ( Model "" [] Nothing, Cmd.none )
 
 
